@@ -26,7 +26,9 @@ function removeFeat(string) {
 
 function normalizeYoutubeTitle(title) {
   const parsed = getArtistTitle(title);
-  const artistAndSong = parsed.join(' ');
+
+  const artistAndSong = parsed ? parsed.join(' ') : title;
+
   return removeFeat(artistAndSong);
 }
 
@@ -46,7 +48,7 @@ module.exports = (robot) => {
       })
       .then((data) => {
         if (_.isEmpty(_.get(data, 'body.tracks.items'))) {
-          msg.send('Couldn\'t find any match from Spotify.');
+          //msg.send('Couldn\'t find any match from Spotify.');
           return BPromise.resolve(false);
         }
 

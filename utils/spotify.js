@@ -52,6 +52,9 @@ function refreshToken() {
     });
 }
 
+// refresh token every hour
+setInterval(refreshToken, 3600 * 1000);
+
 module.exports = {
   client: retryingSpotify,
   refreshToken,
